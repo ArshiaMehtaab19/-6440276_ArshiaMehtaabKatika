@@ -1,1 +1,26 @@
+/* Navigation menu without bullets */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-menu li {
+  margin: 5px;
+}
+
+/* Link pseudo-classes */
+a:link {
+  color: blue;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: green;
+}
+a:active {
+  color: red;
+}
 
