@@ -1,1 +1,16 @@
+/* RGBA background with fallback HEX */
+body {
+  background-color: #e6f2ff;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Gradient background for section */
+.gradient-header {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
 
