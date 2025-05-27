@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Nearby Events</title>
+</head>
+<body>
+  <h2>Locate Nearest Event</h2>
+  <button id="findEventsBtn">Find Nearby Events</button>
+  <p id="status"></p>
+  <p id="coordinates"></p>
+  <script>
+    const findBtn = document.getElementById('findEventsBtn');
+    const status = document.getElementById('status');
+    const coords = document.getElementById('coordinates');
+    function success(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      status.textContent = 'Location found!';
+      coords.textContent = `Latitude: ${latitude.toFixed(5)}, Longitude: ${longitude.toFixed(5)}`;
+    }
+    function error(err) {
+      switch(err.code) {
+        case err.PERMISSION_DENIED:
+          status.textContent = "Permission denied. Please allow location access.";
+          break;
+        case err.POSITION_UNAVAILABLE:
+          status.textContent = "Position unavailable.";
+          break;
+        case err.TIMEOUT:
+          status.textContent = "Request timed out. Try again.";
+          break;
+        default:
+          status.textContent = "An unknown error occurred.";
+      }
+      coords.textContent = '';
+    }
+    findBtn.addEventListener('click', () => {
+      if (!navigator.geolocation) {
+        status.textContent = "Geolocation is not supported by your browser.";
+        return;
+      }
+      status.textContent = 'Locating…';
+      navigator.geolocation.getCurrentPosition(success, error, {
+        enableHighAccuracy: true,  // high accuracy option
+        timeout: 10000,            // 10 seconds timeout
+        maximumAge: 0              // do not use cached position
+      });
+    });
+  </script>
+</body>
+</html>
 
