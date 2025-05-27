@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Promo Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            text-align: center;
+        }
+        video {
+            width: 600px;
+            height: auto;
+            border: 3px solid #888;
+            border-radius: 10px;
+        }
+        #videoMessage {
+            margin-top: 15px;
+            color: green;
+            font-weight: bold;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input, textarea {
+            padding: 10px;
+            width: 300px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>You're Invited!</h2>
+    <p>Watch this short video about our upcoming event:</p>
+    <video id="promoVideo" controls oncanplay="videoReadyMessage()">
+        <source src="promo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div id="videoMessage"></div>
+    <form>
+        <h3>Leave us a comment before you go</h3>
+        <input type="text" placeholder="Your Name" required><br>
+        <textarea rows="4" placeholder="Your Comment" required></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        function videoReadyMessage() {
+            document.getElementById("videoMessage").textContent = "🎥 Video ready to play!";
+        }
+        // Warn user before leaving if form is not submitted
+        let formModified = false;
+        document.querySelector("form").addEventListener("input", function () {
+            formModified = true;
+        });
+        window.onbeforeunload = function () {
+            if (formModified) {
+                return "You have unsaved changes. Are you sure you want to leave?";
+            }
+        };
+    </script>
+</body>
+</html>
