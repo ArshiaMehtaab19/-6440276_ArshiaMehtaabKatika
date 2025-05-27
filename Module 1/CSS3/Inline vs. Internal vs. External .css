@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Portal - Styling</title>
+
+  <!-- Internal CSS -->
+  <style>
+    body {
+      background-color: #f0f0f0;
+    }
+  </style>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Inline Style -->
+  <h1 style="color: red;">Local Community Event Portal</h1>
+
+  <!-- Reusable Styled Header -->
+  <header id="mainHeader">
+    <h2>Welcome to Our Events</h2>
+  </header>
+
+</body>
+</html>
+/* Header styles */
+#mainHeader {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
 
